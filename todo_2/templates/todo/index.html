@@ -53,9 +53,19 @@
 					</div>
 
 					<ul class="list-group t20">
-						<li class="list-group-item">Create my new awesome website.</li>
-						<li class="list-group-item todo-completed">Attend weekly coding session.</li>
-						<li class="list-group-item">Visit the gym.</li>
+
+						{% for todo in todo_list  %}
+							{% if todo.complete %}
+							<li class="list-group-item">{{ todo.text }}</li>
+							{% else %}
+							<a href="#">
+							<li class="list-group-item">{{ todo.text }}</li>
+							</a>
+							{% endif %}
+						
+
+						{% endfor %}
+
 					</ul>
 				</div>
 			</div>
