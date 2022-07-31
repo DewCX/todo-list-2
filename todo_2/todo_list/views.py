@@ -15,7 +15,6 @@ def index(request):
     return render(request, 'todo/index.html', context)
 
 #Add Todo
-
 @require_POST
 def addTodo(request):
     form = TodoForm(request.POST)
@@ -23,5 +22,15 @@ def addTodo(request):
     if form.is_valid():
         new_todo = Todo(text=request.POST['text'])
         new_todo.save()
+
+    return redirect('index')
+
+
+#Complete Todo
+
+def completeTodo(request, todo_id):
+    todo = Todo.objects.get(pk=todo_id)
+    todo.complete = True
+    todo.save()
 
     return redirect('index')
