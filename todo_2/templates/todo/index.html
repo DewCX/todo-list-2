@@ -22,7 +22,7 @@
 				<div class="col-lg-4 col-lg-offset-4" id="content">
 					<h2>WHAT DO YOU WANT TO DO TODAY?</h2>
 					
-					<form action="#" method="POST" role="form">
+					<form action="{% url 'add' %}" method="POST" role="form">
 						{% csrf_token %}
 						<div class="form-group">
 							<div class="input-group">
@@ -55,7 +55,7 @@
 
 						{% for todo in todo_list  %}
 							{% if todo.complete %}
-							<li class="list-group-item">{{ todo.text }}</li>
+							<li class="list-group-item todo-completed">{{ todo.text }}</li>
 							{% else %}
 							<a href="#">
 							<li class="list-group-item">{{ todo.text }}</li>
@@ -78,6 +78,6 @@
 			</footer>
 		</div>
 		<!-- Bootstrap JavaScript -->
-		<script src="./bs/js/bootstrap.min.js"></script>
+		<script src="{% static 'todo/bs/js/bootstrap.min.js' %}"></script>
 	</body>
 </html>
